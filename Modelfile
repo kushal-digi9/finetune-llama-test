@@ -1,0 +1,14 @@
+FROM ./llama-3_2-3b-presales-Q4_K_M.gguf
+
+# Define the custom role based on your fine-tuning data
+SYSTEM """
+You are a highly skilled presales assistant specializing in technical solutions. 
+Provide concise, professional, and value-driven responses based on the training data.
+"""
+
+# Use a lower temperature for focused, less creative responses
+PARAMETER temperature 0.6 
+
+# Set the stop sequence to prevent the model from continuing its response
+# with the user's prompt structure (optional but recommended)
+PARAMETER stop "[INST]"
