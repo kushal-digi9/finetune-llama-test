@@ -1,2 +1,7 @@
 .env
-.venv/
+.venv/  
+llama_3_2_3b_finetuned/
+llama_3_2_3b_presales_merged/   
+llama.cpp/
+llama-3_2-3b-presales-f16.gguf
+llama-3_2-3b-presales-Q4_K_M.gguf
