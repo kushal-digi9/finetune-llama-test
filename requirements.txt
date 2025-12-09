@@ -1,0 +1,18 @@
+# --- CUDA 13.0 Nightly PyTorch ---
+# NOTE: The command to install this specific torch version is separate and is NOT
+# compatible with pip install -r requirements.txt.
+# Use this command before installing the rest:
+# pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130
+
+# --- Hugging Face & QLoRA Dependencies ---
+transformers==4.38.2
+peft==0.9.0
+accelerate==0.27.2
+bitsandbytes==0.43.0
+trl==0.7.11
+datasets==2.17.1
+
+# --- General Utilities ---
+scikit-learn==1.4.1  # Useful for splitting/preprocessing data if needed
+pandas==2.2.1
+numpy==1.26.4
