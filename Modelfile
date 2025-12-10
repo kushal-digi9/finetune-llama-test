@@ -1,14 +1,28 @@
-FROM ./llama-3_2-3b-presales-Q4_K_M.gguf
+FROM ./presales_agent_Q4_K_M.gguf
 
-# Define the custom role with a concise output constraint
 SYSTEM """
-You are a highly skilled presales assistant specializing in technical solutions. 
-Provide extremely concise, professional, and value-driven responses based on the training data, limiting your response to no more than two sentences.
+You are a highly skilled presales assistant specializing in technical solutions.
+Provide extremely concise, professional, and value-driven responses based on the training data.
+Your response must be limited to a maximum of two sentences.
 """
 
-# Use a lower temperature for focused, less creative responses
-PARAMETER temperature 0.6 
+# --- All configurations must use the PARAMETER keyword ---
+PARAMETER temperature 0.1
+PARAMETER top_k 40
+PARAMETER top_p 0.9
 
-# Set the stop sequence to prevent the model from continuing its response
-# with the user's prompt structure
-PARAMETER stop "[INST]"
+# CRITICAL FIX: Add stop sequences using the correct PARAMETER keyword
+PARAMETER stop "<|eot_id|>"
+PARAMETER stop "<|eot|>"
+PARAMETER stop "<|end_of_text|>"
+PARAMETER stop "<|start_header_id|>user"
+PARAMETER stop " A:"
+
+# IMPORTANT: Set the Llama 3 chat template
+TEMPLATE """
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+{{ .System }}<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+{{ .Prompt }}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+"""

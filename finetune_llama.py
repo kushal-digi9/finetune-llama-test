@@ -34,7 +34,7 @@ NUM_EPOCHS = 3.0
 PER_DEVICE_BATCH_SIZE = 2 # Start low (1 or 2)
 GRADIENT_ACCUMULATION_STEPS = 4 # Simulates a batch size of 8 (2 * 4)
 LEARNING_RATE = 2e-4
-MAX_SEQ_LENGTH = 512 # Max length of the conversation string
+MAX_SEQ_LENGTH = 1024
 
 # ----------------- Main Fine-Tuning Function -----------------
 
